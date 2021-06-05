@@ -22,3 +22,28 @@ print(pca_1)
 print(" ")
 
 print(pca_2)
+
+
+class pca():
+
+    def __init__(self, n_components, svd_solver=None):
+        self.n_compnents = n_components
+        self.svd_solver = svd_solver
+
+    def fit(self, data):
+        pass
+    
+    def transform(self, data):
+        pass
+
+    def fit_transform(self, data):
+        pass
+    
+    def evr_(self):
+        pass
+
+    def __str__(self) -> str:
+        pass
+
+    def __repr__(self) -> str:
+        pass
