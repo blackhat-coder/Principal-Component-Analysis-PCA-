@@ -5,26 +5,17 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-
-train = pd.read_csv('BLI_21102020083556687.csv')
-train.fillna(999, inplace=True)
-
-# train.info()
-
-nums = [x for x in train.columns if train[x].dtype in ['float64', 'int64']]
-
-train_x = train[nums]
-
-train_x = train_x - train_x.mean(axis=0)
-
 class pca():
     def __init__(self, n_components, svd_solver=None):
         self.n_components = n_components
         self.svd_solver = svd_solver
 
-    def fit(self, data):
+    def fit(self, data, num=None):
         # data = data.astype('float')
-        self.data = data
+        if num != None:
+            self.data = data[num]
+        else:
+            self.data = data
 
         self.dim_x , self.dim_y = data.shape
         
@@ -66,12 +57,4 @@ class pca():
         
 
     def __str__(self) -> str:
-        pass
-
-    def __repr__(self) -> str:
-        pass
-
-X_red = pca(n_components=2)
-X_red.fit(train_x)
-
-X_red.transform(train_x)
+        return f"PCA -> n_components: {self.n_components}"
